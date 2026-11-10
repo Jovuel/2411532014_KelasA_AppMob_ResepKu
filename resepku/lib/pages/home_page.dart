@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:resepku/data/dummy_recipes.dart';
 import 'package:resepku/widgets/favorite_badge_button.dart';
 import 'package:resepku/widgets/recipe_tile.dart';
+import 'package:resepku/pages/settings_page.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({super.key});
@@ -11,7 +12,20 @@ class HomePage extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: const Text('Resepku'),
-        actions: const [FavoriteBadgeButton()],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingsPage(),
+                ),
+              );
+            },
+          ),
+          FavoriteBadgeButton(),
+        ],
       ),
       body: ListView(
         children: [
